@@ -24,11 +24,11 @@ By default it will run on localhost, port 8082 (8080 was tired enough, did not w
 
 http://localhost:8082/camel/mygeocoder?address=81%20Farringdon%20Street&apiKey={myApiKey}
 
-Before hitting enter change {myApiKey} with your key Google Maps API key.
+Before hitting enter change the address value with the one you like and replace {myApiKey} with your Google Maps API key. You can also make the call without the apiKey param:
 
 http://localhost:8082/camel/mygeocoder?address=81%20Farringdon%20Street
 
-You can also make the call without the apiKey param but you need to set a default one here:
+but you need to set a default one here:
 
 poc.mygeocoder.rest.GoogleGeocodingRestTemplateImp.KEY_DEFAULT_VALUE
 
