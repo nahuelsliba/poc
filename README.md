@@ -1,3 +1,3 @@
 # poc
 PoC Repo
-Repo use for Proof of Concepts.
+Use for Proof of Concepts.
