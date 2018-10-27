@@ -9,8 +9,8 @@
 
 -- From IDE (e.g. Eclipse)
 
-Import as a maven project.
-Run Application.java as a Java Application.
+- Import as a maven project.
+- Run Application.java as a Java Application.
 
 -- Command line
 
