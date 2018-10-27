@@ -1,0 +1,63 @@
+----------- mygeocoder -----------
+
+--- Running instructions
+
+Download the source code from here:
+
+-- Dependencies
+
+- JRE 1.8
+- Maven to run from console (tested with Apache Maven 3.2.5)
+
+-- From IDE (e.g. Eclipse)
+
+Import as a maven project.
+Run Application.java as a Java Application.
+
+-- Command line
+
+Go to the project base directory and execute:
+
+mvn spring-boot:run
+
+-- Using it
+
+By default it will run on localhost, port 8082 (8080 was tired enough, did not want to bother him). Open your favorite browser and paste this url:
+
+http://localhost:8082/camel/mygeocoder?address=81%20Farringdon%20Street&apiKey={myApiKey}
+
+Before hitting enter change {myApiKey} with your key Google Maps API key.
+
+http://localhost:8082/camel/mygeocoder?address=81%20Farringdon%20Street
+
+You can also make the call without the apiKey param but you need to set a default one here:
+
+poc.mygeocoder.rest.GoogleGeocodingRestTemplateImp.KEY_DEFAULT_VALUE
+
+If you do not have an apiKey I could borrow mine, but you will have to buy me a beer first.
+
+--- Developer notes (or sharing the frustration section)
+
+-- camel-geocoder
+
+Apache Camel already have a geocoding solution inside the set components it provides (http://camel.apache.org/geocoder.html), so, why reinventing the wheel?
+
+Well, this component makes use of com.google.maps.GeocodingApi, a Google solution for Java to call this geocoding api.
+
+Then… even better I neither have to code the API call!
+
+-- google-maps-services-java
+
+Sure, but GeocodingApi uses com.google.maps.GeocodingApiRequest and this class makes calls to the API using json format, not xml.
+
+Well, just configure it to use xml format instead of… Oh, it is not possible to do that, I see. What happened?! Was Friday when they developed this at Google?
+
+-- Summary
+
+Both Apache Camel camel-geocoder component and Google GeocodingApi are very close in terms of configuration and extensibility. 
+Ended up constructing my own component (for sure using the Apache Camel facilities) and my own RestTemplate to call the Google Maps API that accepts the two available formats (xml, json).
+
+
+
+
+
